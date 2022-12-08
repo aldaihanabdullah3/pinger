@@ -1,4 +1,6 @@
-# pinger2
+# Pinger
+
+Simple javascript used to check connectiviy by constantly pinging google.com
 
 ## Project setup
 ```

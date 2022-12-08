@@ -1,19 +1,19 @@
 {
-  "name": "pinger2",
+  "name": "Pinger",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --open --mime-types mime.types",
+    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "apexcharts": "^3.36.3",
+    "axios": "^1.2.1",
     "core-js": "^3.8.3",
-    "d3": "^7.7.0",
-    "http-proxy-middleware": "^2.0.6",
     "vue": "^3.2.13",
-    "vue-apexcharts": "^1.6.2"
+    "vue-apexcharts": "^1.6.2",
+    "vue3-apexcharts": "^1.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
