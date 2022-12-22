@@ -18,7 +18,7 @@
                 <p class="result-label">Average Jitter</p>
             </div>
         </div>
-        <apexchart class="chart-canvas" :options="chartOptions" :series="series"></apexchart>
+        <apexchart ref="pingchart" class="chart-canvas" :options="chartOptions" :series="series"></apexchart>
     </div>
 </template>
   
@@ -137,6 +137,20 @@ export default {
             },
         }
     },
+    watch: {
+        url: {
+            handler() {
+                this.apply();
+            },
+            deep: true,
+        },
+        interval: {
+            handler() {
+                this.apply();
+            },
+            deep: true,
+        }
+    },
     methods: {
         ping() {
             this.startTime = Date.now();
@@ -168,6 +182,7 @@ export default {
                 );
         },
         reset() {
+            // Reset the graphs
             this.lastLatency = 0;
             this.currentLatency = 0
             this.currentJitter = 0
@@ -176,31 +191,22 @@ export default {
             this.averageLatency = 0
             this.averageJitter = 0
             this.counter = 0
-            this.series[0].data = []
-            this.series[1].data = []
+            this.series = [{
+                name: 'Latency',
+                data: []
+            }, {
+                name: 'Jitter',
+                data: []
+            }];
             this.chartOptions["xaxis"].categories = []
-            this.$forceUpdate();
-        },
-        apply() {
-            // Stop the interval that calls the ping method
-            clearInterval(this.interval);
-
-            // Reset the graphs
-            this.reset();
-
-            // Restart the interval with the new URL
-            this.backgroundPing = setInterval(this.ping, this.interval);
         },
         rerenderchart() {
-            console.log(window.innerWidth)
             if (window.innerWidth < 650) {
                 this.windowWidth = window.innerWidth
             }
-            //this.$forceUpdate();
         }
     },
     mounted() {
-        console.log(this.url, this.interval)
         this.rerenderchart();
         this.reset();
         this.ping();

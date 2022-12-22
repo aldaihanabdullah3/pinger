@@ -1,6 +1,6 @@
 <template>
-  <div class="pinger-container">
-    <h3 class="pinger-title">Ultra Lite Browser Based Pinger </h3>
+  <div ref="maincontainer" class="pinger-container">
+    <h3 class="pinger-title">Browser Based Ping Service</h3>
 
     <div class="input-container">
       <table>
@@ -28,7 +28,7 @@
         </tr>
       </table>
     </div>
-    <pingercc class="canvas-container" :url="url" :interval="interval"></pingercc>
+    <pingercc v-if="showPingercc" class="pingercc" :url="url" :interval="interval" />
   </div>
 </template>
   
@@ -117,7 +117,7 @@ button {
   
 <script>
 import PingerCanvasComponenet from "./Canvas.vue";
-
+/* eslint-disable */
 export default {
   name: "PingerComponenet",
   components: {
@@ -130,16 +130,24 @@ export default {
       interval: 1000,
       InputUrl: 'https://www.google.com',
       InputInterval: 1000,
+      showPingercc: true,
     }
   },
   methods: {
     apply() {
-      this.url = this.InputUrl;
-      this.interval = this.InputInterval;
-      console.log(this.interval, this.url);
-      this.$forceUpdate();
+      // Set showPingercc to false to hide the pingercc component
+      this.showPingercc = false;
+      // Wait for the component to be removed from the DOM
+      this.$nextTick(() => {
+        // Update the url and interval props for the pingercc component
+        this.url = this.InputUrl;
+        this.interval = this.InputInterval;
+        // Set showPingercc to true to show the pingercc component again
+        this.showPingercc = true;
+      });
     },
     mounted() {
+      this.showPingercc = true;
     }
   }
 };
