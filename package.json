@@ -11,6 +11,7 @@
     "apexcharts": "^3.36.3",
     "axios": "^1.2.1",
     "core-js": "^3.8.3",
+    "jenika-ui": "^0.0.8",
     "vue": "^3.2.13",
     "vue-apexcharts": "^1.6.2",
     "vue3-apexcharts": "^1.4.1"

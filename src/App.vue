@@ -1,13 +1,16 @@
 <template>
-  <WorkRemainChart msg="Hello Vue 3 in CodeSandbox!" />
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <PingerVue msg="Hello Vue 3 in CodeSandbox!" />
+  </div>
+  
 </template>
 
 <script>
-import WorkRemain from "./components/WorkRemain.vue";
+import PingerComponenet from "./components/Pinger/Pinger.vue";
 export default {
   name: "App",
   components: {
-    WorkRemainChart: WorkRemain,
+    PingerVue: PingerComponenet,
   },
 };
 </script>
