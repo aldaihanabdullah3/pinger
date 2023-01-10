@@ -1,6 +1,7 @@
 # Pinger
 
 Simple javascript used to check connectiviy by constantly pinging google.com
+Demo: https://codesandbox.io/embed/awesome-tamas-416f91?codemirror=1
 
 ## Project setup
 ```
